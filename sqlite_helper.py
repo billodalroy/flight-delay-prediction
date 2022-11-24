@@ -37,68 +37,7 @@ def insert_airline(conn, values):
     return cur.lastrowid
 
 def insert_master_record(conn, values):
-    sql = '''INSERT INTO Flights(
-    FlightDate,
-    Airline, 
-    Origin, 
-    Dest, 
-    Cancelled, 
-    Diverted, 
-    CRSDepTime, 
-    DepTime, 
-    DepDelayMinutes, 
-    DepDelay, 
-    ArrTime, 
-    ArrDelayMinutes, 
-    AirTime, 
-    CRSElapsedTime, 
-    ActualElapsedTime, 
-    Distance, 
-    Year, 
-    Quarter, 
-    Month, 
-    DayofMonth, 
-    DayOfWeek, 
-    Marketing_Airline_Network, 
-    Operated_or_Branded_Code_Share_Partners, 
-    DOT_ID_Marketing_Airline, 
-    IATA_Code_Marketing_Airline, 
-    Flight_Number_Marketing_Airline, 
-    Operating_Airline, 
-    DOT_ID_Operating_Airline,
-    IATA_Code_Operating_Airline, 
-    Tail_Number, 
-    Flight_Number_Operating_Airline, 
-    OriginAirportID, 
-    OriginAirportSeqID, 
-    OriginCityMarketID, 
-    OriginCityName, 
-    OriginState, 
-    OriginStateFips, 
-    OriginStateName, 
-    OriginWac, 
-    DestAirportID, 
-    DestAirportSeqID, 
-    DestCityMarketID, 
-    DestCityName, 
-    DestState, 
-    DestStateFips, 
-    DestStateName, 
-    DestWac, 
-    DepDel15, 
-    DepartureDelayGroups, 
-    DepTimeBlk, 
-    TaxiOut, 
-    WheelsOff, 
-    WheelsOn, 
-    TaxiIn, 
-    CRSArrTime, 
-    ArrDelay, 
-    ArrDel15, 
-    ArrivalDelayGroups, 
-    ArrTimeBlk, 
-    DistanceGroup, 
-    DivAirportLandings) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)'''
+    sql = '''INSERT INTO Flights VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)'''
     try:
         cur = conn.cursor()
         cur.execute(sql, values)
@@ -106,8 +45,7 @@ def insert_master_record(conn, values):
         print(e)
     return cur.lastrowid
 
-def insert_airport_record(conn, values):
-    pass
+
 
 
 
