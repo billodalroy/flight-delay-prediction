@@ -69,9 +69,26 @@ create_flights_sql = '''CREATE TABLE Flights (
     DivAirportLandings TEXT
 )
 '''
+
 # create_table(conn_1, create_flights_sql)
 print("\n Table Created")
-print("\n Ingesting Data")
+
+
+header = None
+with conn_1:
+    with open("Combined_Flights_2021.csv") as file:
+        values = csv.reader(file)
+        for row in values:
+            if not header:
+                header = 1
+                continue
+            # print(row)
+            # print(values) 
+            rid = insert_master_record(conn_1,tuple(row))
+            # print(rid)
+conn_1.close()
+
+conn_1 = create_connection("main.db")
 
 header = None
 with conn_1:
