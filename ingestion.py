@@ -4,6 +4,29 @@ import csv
 # Create Connection to DB
 conn_1 = create_connection("main.db")
 
+# Create Airlines Table
+create_airlines_sql = '''CREATE TABLE airlines (
+    Code TEXT PRIMARY KEY,
+    Description TEXT
+)
+'''
+
+create_table(conn_1, create_airlines_sql)
+
+# Adding Rows
+header = None
+with conn_1:
+    with open("Airlines.csv") as file:
+        for line in file:
+            if not header:
+                header = line.strip().split(',')
+                print("Header", header)
+                continue
+            values = line.strip().split(',',1)
+            #print(values)
+            rid = insert_airline(conn_1,values)
+            #print(rid)
+
 # Create Flights Table
 create_flights_sql = '''CREATE TABLE Flights (
     FlightDate DATE,
@@ -103,3 +126,4 @@ with conn_1:
             rid = insert_master_record(conn_1,tuple(row))
             # print(rid)
 conn_1.close()
+

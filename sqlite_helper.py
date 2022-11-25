@@ -45,6 +45,15 @@ def insert_master_record(conn, values):
         print(e)
     return cur.lastrowid
 
+def insert_airport(conn, values):
+    sql = '''INSERT INTO Airports VALUES(?,?,?)'''
+    try:
+        cur = conn.cursor()
+        cur.execute(sql, values)
+    except Error as e:
+        print(e)
+    return cur.lastrowid
+
 
 
 
