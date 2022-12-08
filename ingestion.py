@@ -28,7 +28,7 @@ with conn_1:
             #print(rid)
 
 # Create Flights Table
-create_flights_sql = '''CREATE TABLE Flights (
+create_raw_data_sql = '''CREATE TABLE raw_data (
     FlightDate DATE,
     Airline TEXT, 
     Origin TEXT, 
@@ -93,7 +93,7 @@ create_flights_sql = '''CREATE TABLE Flights (
 )
 '''
 
-# create_table(conn_1, create_flights_sql)
+create_table(conn_1, create_raw_data_sql)
 print("\n Table Created")
 
 
