@@ -55,6 +55,24 @@ def insert_airport(conn, values):
     return cur.lastrowid
 
 
-
+def insert_route(conn, values):
+    sql = '''INSERT INTO routes (Source, Destination) VALUES(?,?)'''
+    try:
+        cur = conn.cursor()
+        cur.execute(sql, values)
+    except Error as e:
+        print(e)
+    return cur.lastrowid
+    
+def insert_flight(conn, values):
+    sql = '''INSERT INTO flights (FlightDate, Airline, RouteID, Cancelled, Diverted, CRSDepTime, 
+    DepTime, DepDelayMinutes, DepDelay, ArrTime, ArrDelayMinutes, AirTime, Distance, IATA_Code_Marketing_Airline,
+    Flight_Number_Operating_Airline) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)'''
+    try:
+        cur = conn.cursor()
+        cur.execute(sql, values)
+    except Error as e:
+        print(e) 
+    return cur.lastrowid
 
 
