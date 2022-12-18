@@ -35,6 +35,8 @@ CREATE TABLE routes (
     RouteID INTEGER PRIMARY KEY AUTOINCREMENT,
     Source TEXT,
     Destination TEXT
+    FOREIGN KEY(Source) REFERENCES airports(Airport)
+    FOREIGN KEY(Destination) REFERENCES airports(Airport)
 )"""
 
 create_table(conn_1,creates_routes_table_sql)
@@ -58,6 +60,7 @@ with conn_1:
 
 
 create_normalized_flights_sql = """CREATE TABLE flights (
+    RecordID INTEGER PRIMARY KEY AUTOINCREMENT,
     FlightDate DATE, 
     RouteID INTEGER, 
     Cancelled TEXT, 
@@ -73,7 +76,7 @@ create_normalized_flights_sql = """CREATE TABLE flights (
     IATA_Code_Marketing_Airline TEXT,
     Flight_Number_Operating_Airline TEXT,
     FOREIGN KEY(RouteID) REFERENCES routes(RouteID),
-    FOREIGN KEY(IATA_Code_Marketing_Airline) REFERENCES airlines(Airport)
+    FOREIGN KEY(IATA_Code_Marketing_Airline) REFERENCES airlines(Code)
 )
 """
 
